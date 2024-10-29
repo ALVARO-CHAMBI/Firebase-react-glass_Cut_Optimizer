@@ -22,10 +22,10 @@ export const AuthForm = () => {
     try {
       if (isLogin) {
         await signInWithEmailAndPassword(auth, email, password);
-        toast.success('Successfully logged in!');
+        toast.success('Logeado correctamente!');
       } else {
         await createUserWithEmailAndPassword(auth, email, password);
-        toast.success('Account created successfully!');
+        toast.success('Cuenta creada correctamente!');
       }
     } catch (error: any) {
       toast.error(error.message);
@@ -38,7 +38,7 @@ export const AuthForm = () => {
     try {
       const provider = new GoogleAuthProvider();
       await signInWithPopup(auth, provider);
-      toast.success('Successfully logged in with Google!');
+      toast.success('Logueo correctamente con Google!');
     } catch (error: any) {
       toast.error(error.message);
     }
@@ -49,19 +49,19 @@ export const AuthForm = () => {
       <div className="bg-white rounded-2xl shadow-xl w-full max-w-md p-8">
         <div className="text-center mb-8">
           <h1 className="text-3xl font-bold text-gray-900 mb-2">
-            {isLogin ? 'Welcome Back' : 'Create Account'}
+            {isLogin ? 'Bienvenido' : 'Crea una cuenta'}
           </h1>
           <p className="text-gray-600">
             {isLogin
-              ? 'Enter your credentials to access your account'
-              : 'Sign up to get started with our platform'}
+              ? 'Ingresa tus credenciales para acceder a tu cuenta'
+              : 'Regístrate para comenzar con nuestra plataforma'}
           </p>
         </div>
 
         <form onSubmit={handleSubmit} className="space-y-6">
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-2">
-              Email Address
+              Email 
             </label>
             <div className="relative">
               <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-5 w-5" />
@@ -70,7 +70,7 @@ export const AuthForm = () => {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 className="pl-10 w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                placeholder="Enter your email"
+                placeholder="Ingrese su correo"
                 required
               />
             </div>
@@ -78,7 +78,7 @@ export const AuthForm = () => {
 
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-2">
-              Password
+              Contraseña
             </label>
             <div className="relative">
               <Lock className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-5 w-5" />
@@ -87,7 +87,7 @@ export const AuthForm = () => {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 className="pl-10 w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                placeholder="Enter your password"
+                placeholder="Ingrese su contraseña"
                 required
               />
             </div>
@@ -99,18 +99,18 @@ export const AuthForm = () => {
             className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-4 rounded-lg transition duration-200 flex items-center justify-center gap-2"
           >
             {loading ? (
-              'Processing...'
+              'Procesando...'
             ) : (
               <>
                 {isLogin ? (
                   <>
                     <LogIn className="h-5 w-5" />
-                    Sign In
+                    Iniciar sesión
                   </>
                 ) : (
                   <>
                     <UserPlus className="h-5 w-5" />
-                    Sign Up
+                    Crear cuenta
                   </>
                 )}
               </>
@@ -122,7 +122,7 @@ export const AuthForm = () => {
               <div className="w-full border-t border-gray-300"></div>
             </div>
             <div className="relative flex justify-center text-sm">
-              <span className="px-2 bg-white text-gray-500">Or continue with</span>
+              <span className="px-2 bg-white text-gray-500">O continua con</span>
             </div>
           </div>
 
@@ -132,17 +132,17 @@ export const AuthForm = () => {
             className="w-full bg-white border border-gray-300 text-gray-700 font-semibold py-3 px-4 rounded-lg hover:bg-gray-50 transition duration-200 flex items-center justify-center gap-2"
           >
             <img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" alt="Google" className="w-5 h-5" />
-            Continue with Google
+            Continuar con Google
           </button>
 
           <p className="text-center text-gray-600 mt-4">
-            {isLogin ? "Don't have an account?" : "Already have an account?"}{" "}
+            {isLogin ? "No tienes una cuenta?" : "Ya tienes una cuenta?"}{" "}
             <button
               type="button"
               onClick={() => setIsLogin(!isLogin)}
               className="text-blue-600 hover:text-blue-700 font-semibold"
             >
-              {isLogin ? "Sign Up" : "Sign In"}
+              {isLogin ? "Crear cuenta" : "Iniciar sesión"}
             </button>
           </p>
         </form>
